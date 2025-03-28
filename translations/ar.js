@@ -1,0 +1,132 @@
+// Arabic translations
+const ar = {
+  // Common
+  appName: "EduAI",
+  appTagline: "مساعدك التعليمي المدعوم بالذكاء الاصطناعي",
+  
+  // Auth
+  login: "تسجيل الدخول",
+  signUp: "إنشاء حساب",
+  email: "البريد الإلكتروني",
+  password: "كلمة المرور",
+  confirmPassword: "تأكيد كلمة المرور",
+  forgotPassword: "نسيت كلمة المرور؟",
+  dontHaveAccount: "ليس لديك حساب؟",
+  alreadyHaveAccount: "لديك حساب بالفعل؟",
+  emailRequired: "البريد الإلكتروني مطلوب",
+  invalidEmail: "يرجى إدخال عنوان بريد إلكتروني صالح",
+  passwordRequired: "كلمة المرور مطلوبة",
+  passwordLength: "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+  passwordsDoNotMatch: "كلمات المرور غير متطابقة",
+  loginFailed: "البريد الإلكتروني أو كلمة المرور غير صالحة",
+  
+  // Onboarding
+  completeProfile: "أكمل ملفك الشخصي",
+  personalInfo: "المعلومات الشخصية",
+  schoolDetails: "تفاصيل المدرسة",
+  yourBooks: "كتبك",
+  studyMaterials: "مواد الدراسة (اختياري)",
+  nextStep: "الخطوة التالية",
+  back: "رجوع",
+  completeSetup: "إكمال الإعداد",
+  
+  // Personal Info
+  firstName: "الاسم الأول",
+  lastName: "اسم العائلة",
+  age: "العمر",
+  grade: "الصف",
+  firstNameRequired: "الاسم الأول مطلوب",
+  lastNameRequired: "اسم العائلة مطلوب",
+  ageRequired: "العمر مطلوب",
+  ageRange: "يجب أن يكون العمر بين 10 و 18",
+  gradeRequired: "الصف مطلوب",
+  selectGrade: "اختر صفك",
+  
+  // School Details
+  city: "المدينة",
+  school: "اسم المدرسة",
+  cityRequired: "المدينة مطلوبة",
+  schoolRequired: "المدرسة مطلوبة",
+  selectCity: "اختر مدينتك",
+  selectSchool: "اختر مدرستك",
+  curriculum: "المنهج",
+  israeliCurriculum: "المنهج الإسرائيلي",
+  internationalCurriculum: "المنهج الدولي",
+  
+  // Books
+  selectBooks: "اختر كتبك",
+  booksInstructions: "انقر على الكتب التي تستخدمها في فصولك. يمكنك التصفية حسب الموضوع أو البحث عن كتب محددة.",
+  selectedBooks: "لقد اخترت {count} كتاب/كتب.",
+  searchBooks: "ابحث عن الكتب حسب العنوان أو الموضوع أو الوصف...",
+  allSubjects: "جميع المواضيع",
+  loadingBooks: "جاري تحميل الكتب...",
+  noBooks: "لم يتم العثور على كتب",
+  noMatchingBooks: "لا توجد كتب تطابق بحثك \"{search}\". جرب مصطلح بحث مختلف أو امسح البحث.",
+  noAvailableBooks: "لا توجد كتب متاحة للمرشحات المحددة. حاول تحديد موضوع أو صف مختلف.",
+  clearSearch: "مسح البحث",
+  manageBooks: "إدارة الكتب",
+  hideBookSelector: "إخفاء محدد الكتب",
+  noBooksSelected: "لم تختر أي كتب بعد. انقر على \"إدارة الكتب\" لاختيار كتب لمستوى صفك.",
+  continueWithoutBooks: "نعم، استمر بدون كتب",
+  selectBooksInstead: "لا، سأختار الكتب",
+  
+  // Profile
+  profile: "الملف الشخصي",
+  myBooks: "كتبي",
+  settings: "الإعدادات",
+  chat: "الدردشة",
+  logout: "تسجيل الخروج",
+  yourProfile: "ملفك الشخصي",
+  editProfile: "تعديل الملف الشخصي",
+  saveChanges: "حفظ التغييرات",
+  cancel: "إلغاء",
+  upload: "تحميل",
+  personalInformation: "المعلومات الشخصية",
+  schoolInformation: "معلومات المدرسة",
+  
+  // Settings
+  appearance: "المظهر",
+  theme: "السمة",
+  themeDescription: "اختر بين الوضع الفاتح والداكن",
+  light: "فاتح",
+  dark: "داكن",
+  fontSize: "حجم الخط",
+  fontSizeDescription: "ضبط حجم النص في جميع أنحاء التطبيق",
+  small: "صغير",
+  medium: "متوسط",
+  large: "كبير",
+  preferences: "التفضيلات",
+  notifications: "الإشعارات",
+  notificationsDescription: "تلقي إشعارات حول الميزات الجديدة والتحديثات",
+  language: "اللغة",
+  languageDescription: "اختر لغتك المفضلة",
+  english: "الإنجليزية",
+  hebrew: "العبرية",
+  arabic: "العربية",
+  aiAssistant: "مساعد الذكاء الاصطناعي",
+  aiPersonality: "شخصية الذكاء الاصطناعي",
+  aiPersonalityDescription: "اختر كيفية تواصل مساعد الذكاء الاصطناعي معك",
+  friendly: "ودود",
+  professional: "محترف",
+  encouraging: "مشجع",
+  concise: "موجز",
+  dataSharing: "مشاركة البيانات",
+  dataSharingDescription: "السماح بمشاركة البيانات المجهولة لتحسين الذكاء الاصطناعي",
+  accountSettings: "إعدادات الحساب",
+  
+  // Chat
+  sendMessage: "إرسال رسالة",
+  typeMessage: "اكتب رسالتك هنا...",
+  flashcards: "بطاقات تعليمية",
+  testQuiz: "اختبار ومسابقة",
+  tutorMe: "علمني",
+  grading: "التقييم",
+  explainer: "شارح",
+  recap: "ملخص",
+  
+  // Study Materials
+  dragDropFiles: "اسحب وأفلت الملفات هنا، أو انقر للتصفح",
+  supportedFileTypes: "أنواع الملفات المدعومة: PDF، DOC، DOCX، JPG، PNG (الحد الأقصى 5 ميجابايت لكل ملف)"
+};
+
+export default ar;

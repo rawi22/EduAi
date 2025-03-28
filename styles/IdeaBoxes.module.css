@@ -1,0 +1,78 @@
+.ideaBoxesContainer {
+  padding: 20px;
+  background-color: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.ideaBoxesTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.ideaBoxesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.ideaBox {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ideaBox:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-color: #c7d2fe;
+}
+
+.ideaBoxIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background-color: #eef2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4f46e5;
+  margin-bottom: 12px;
+}
+
+.ideaBoxContent {
+  text-align: center;
+}
+
+.ideaBoxTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.ideaBoxDescription {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .ideaBoxesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .ideaBoxesGrid {
+    grid-template-columns: 1fr;
+  }
+}

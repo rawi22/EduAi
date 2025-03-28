@@ -1,0 +1,41 @@
+/* Add RTL support to global CSS */
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+body.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+/* RTL specific adjustments */
+html[dir="rtl"] .sidebar {
+  left: auto;
+  right: 0;
+}
+
+html[dir="rtl"] .content {
+  margin-left: 0;
+  margin-right: 250px;
+}
+
+html[dir="rtl"] .formGroup label {
+  text-align: right;
+}
+
+html[dir="rtl"] .navButton svg {
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+html[dir="rtl"] .settingInfo {
+  text-align: right;
+}
+
+html[dir="rtl"] .settingControl {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Add this to the end of your existing globals.css file */

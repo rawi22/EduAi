@@ -1,0 +1,132 @@
+// English translations
+const en = {
+  // Common
+  appName: "EduAI",
+  appTagline: "Your AI-powered educational assistant",
+  
+  // Auth
+  login: "Login",
+  signUp: "Sign Up",
+  email: "Email",
+  password: "Password",
+  confirmPassword: "Confirm Password",
+  forgotPassword: "Forgot Password?",
+  dontHaveAccount: "Don't have an account?",
+  alreadyHaveAccount: "Already have an account?",
+  emailRequired: "Email is required",
+  invalidEmail: "Please enter a valid email address",
+  passwordRequired: "Password is required",
+  passwordLength: "Password must be at least 6 characters",
+  passwordsDoNotMatch: "Passwords do not match",
+  loginFailed: "Invalid email or password",
+  
+  // Onboarding
+  completeProfile: "Complete Your Profile",
+  personalInfo: "Personal Information",
+  schoolDetails: "School Details",
+  yourBooks: "Your Books",
+  studyMaterials: "Study Materials (Optional)",
+  nextStep: "Next Step",
+  back: "Back",
+  completeSetup: "Complete Setup",
+  
+  // Personal Info
+  firstName: "First Name",
+  lastName: "Last Name",
+  age: "Age",
+  grade: "Grade",
+  firstNameRequired: "First name is required",
+  lastNameRequired: "Last name is required",
+  ageRequired: "Age is required",
+  ageRange: "Age must be between 10 and 18",
+  gradeRequired: "Grade is required",
+  selectGrade: "Select your grade",
+  
+  // School Details
+  city: "City",
+  school: "School Name",
+  cityRequired: "City is required",
+  schoolRequired: "School is required",
+  selectCity: "Select your city",
+  selectSchool: "Select your school",
+  curriculum: "Curriculum",
+  israeliCurriculum: "Israeli Curriculum",
+  internationalCurriculum: "International Curriculum",
+  
+  // Books
+  selectBooks: "Select Your Books",
+  booksInstructions: "Click on the books you use in your classes. You can filter by subject or search for specific books.",
+  selectedBooks: "You have selected {count} book(s).",
+  searchBooks: "Search books by title, subject, or description...",
+  allSubjects: "All Subjects",
+  loadingBooks: "Loading books...",
+  noBooks: "No Books Found",
+  noMatchingBooks: "No books match your search \"{search}\". Try a different search term or clear the search.",
+  noAvailableBooks: "No books available for the selected filters. Try selecting a different subject or grade.",
+  clearSearch: "Clear Search",
+  manageBooks: "Manage Books",
+  hideBookSelector: "Hide Book Selector",
+  noBooksSelected: "You haven't selected any books yet. Click \"Manage Books\" to select books for your grade level.",
+  continueWithoutBooks: "Yes, continue without books",
+  selectBooksInstead: "No, I'll select books",
+  
+  // Profile
+  profile: "Profile",
+  myBooks: "My Books",
+  settings: "Settings",
+  chat: "Chat",
+  logout: "Logout",
+  yourProfile: "Your Profile",
+  editProfile: "Edit Profile",
+  saveChanges: "Save Changes",
+  cancel: "Cancel",
+  upload: "Upload",
+  personalInformation: "Personal Information",
+  schoolInformation: "School Information",
+  
+  // Settings
+  appearance: "Appearance",
+  theme: "Theme",
+  themeDescription: "Choose between light and dark mode",
+  light: "Light",
+  dark: "Dark",
+  fontSize: "Font Size",
+  fontSizeDescription: "Adjust the text size throughout the app",
+  small: "Small",
+  medium: "Medium",
+  large: "Large",
+  preferences: "Preferences",
+  notifications: "Notifications",
+  notificationsDescription: "Receive notifications about new features and updates",
+  language: "Language",
+  languageDescription: "Select your preferred language",
+  english: "English",
+  hebrew: "Hebrew",
+  arabic: "Arabic",
+  aiAssistant: "AI Assistant",
+  aiPersonality: "AI Personality",
+  aiPersonalityDescription: "Choose how the AI assistant communicates with you",
+  friendly: "Friendly",
+  professional: "Professional",
+  encouraging: "Encouraging",
+  concise: "Concise",
+  dataSharing: "Data Sharing",
+  dataSharingDescription: "Allow anonymous data sharing to improve the AI",
+  accountSettings: "Account Settings",
+  
+  // Chat
+  sendMessage: "Send message",
+  typeMessage: "Type your message here...",
+  flashcards: "Flashcards",
+  testQuiz: "Test & Quiz",
+  tutorMe: "Tutor Me",
+  grading: "Grading",
+  explainer: "Explainer",
+  recap: "Recap",
+  
+  // Study Materials
+  dragDropFiles: "Drag and drop files here, or click to browse",
+  supportedFileTypes: "Supported file types: PDF, DOC, DOCX, JPG, PNG (Max 5MB per file)"
+};
+
+export default en;

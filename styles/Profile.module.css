@@ -1,0 +1,250 @@
+.container {
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.profileContainer {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #4F46E5;
+  color: white;
+  padding: 30px 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.navButton {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-align: left;
+  font-size: 16px;
+}
+
+.navButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navButton.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  background-color: #F9FAFB;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 28px;
+  color: #1F2937;
+  margin: 0;
+}
+
+.editButton, .cancelButton, .saveButton {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.editButton {
+  background-color: #4F46E5;
+  color: white;
+  border: none;
+}
+
+.editButton:hover {
+  background-color: #4338CA;
+}
+
+.cancelButton {
+  background-color: #F3F4F6;
+  color: #4B5563;
+  border: 1px solid #D1D5DB;
+}
+
+.cancelButton:hover {
+  background-color: #E5E7EB;
+}
+
+.saveButton {
+  background-color: #10B981;
+  color: white;
+  border: none;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.saveButton:hover {
+  background-color: #059669;
+}
+
+.profileSection {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.profilePictureSection {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.profilePicture {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 30px;
+}
+
+.profilePicture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.uploadOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.uploadOverlay:hover {
+  opacity: 1;
+}
+
+.profileName h2 {
+  font-size: 24px;
+  color: #1F2937;
+  margin: 0 0 5px 0;
+}
+
+.profileName p {
+  font-size: 16px;
+  color: #6B7280;
+  margin: 0;
+}
+
+.editNameContainer {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.profileDetails {
+  padding: 30px;
+}
+
+.profileDetails h3 {
+  font-size: 18px;
+  color: #1F2937;
+  margin: 0 0 20px 0;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.detailLabel {
+  font-size: 14px;
+  color: #6B7280;
+  margin-bottom: 5px;
+}
+
+.detailValue {
+  font-size: 16px;
+  color: #1F2937;
+  font-weight: 500;
+}
+
+.editForm {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+.formGroup label {
+  font-size: 14px;
+  color: #4B5563;
+  margin-bottom: 5px;
+}
+
+.formGroup input, 
+.formGroup select {
+  padding: 10px;
+  border: 1px solid #D1D5DB;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.inputError {
+  border-color: #EF4444 !important;
+}
+
+.errorMessage {
+  color: #EF4444;
+  font-size: 14px;
+  margin-top: 5px;
+}
