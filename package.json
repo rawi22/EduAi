@@ -5,7 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest --watchAll",
+    "test:ci": "jest --ci --coverage",
+    "test:prod": "ENV=prod jest --ci",
+    "vercel-build": "npm run build && npm run test:ci"
   },
   "dependencies": {
     "next": "^13.4.19",
@@ -17,6 +21,14 @@
     "react-icons": "^4.10.1",
     "tailwindcss": "^3.3.3",
     "postcss": "^8.4.28",
-    "autoprefixer": "^10.4.15"
+    "autoprefixer": "^10.4.15",
+    "firebase": "^10.4.0",
+    "firebase-admin": "^11.10.0"
+  },
+  "devDependencies": {
+    "jest": "^29.6.2",
+    "supertest": "^6.3.3",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/jest-dom": "^5.17.0"
   }
 }

@@ -42,22 +42,34 @@ export default function Onboarding() {
     // Fetch user data if available
     const fetchUserData = async () => {
       try {
-        const response = await fetch('/api/auth/user');
-        const data = await response.json();
-        
-        if (response.ok && data.users) {
-          const user = data.users.find(u => u.email === tempUserEmail);
-          if (user) {
-            setUserId(user.id);
+        const response = await fetch(`/api/auth/user?email=${encodeURIComponent(tempUserEmail)}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
           }
+        });
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch user data');
+        }
+        
+        const data = await response.json();
+        if (data.user) {
+          setUserId(data.user.id);
+          // Ensure the user is redirected only if specifically required
+          router.push('/chat');
+        } else {
+          router.push('/');
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
+        // Provide user feedback
+        setErrors('Failed to fetch user data. Please try again.');
       }
     };
 
     fetchUserData();
-  }, [router]);
+  }, [router, setUserId, setError]);
 
   React.useEffect(() => {
     if (formData.city) {

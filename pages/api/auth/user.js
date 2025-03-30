@@ -6,11 +6,19 @@ export default function handler(req, res) {
   }
 
   try {
-    const { userId } = req.query;
+    const { userId, email } = req.query;
 
     // If userId is provided, return specific user
     if (userId) {
       const user = users.find(user => user.id === parseInt(userId));
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      const { password: _, ...userWithoutPassword } = user;
+      return res.status(200).json({ user: userWithoutPassword });
+    } else if (email) {
+      // If email is provided, return user by email
+      const user = users.find(user => user.email === email);
       
       if (!user) {
         return res.status(404).json({ message: 'User not found' });

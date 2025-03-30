@@ -1,6 +1,8 @@
-import users from './users';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../lib/firebase';
+import { setDoc, doc, getFirestore } from 'firebase/firestore';
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
   }
@@ -8,39 +10,50 @@ export default function handler(req, res) {
   try {
     const { email, password, confirmPassword } = req.body;
 
-    // Basic validation
-    if (!email || !password) {
-      return res.status(400).json({ message: 'Email and password are required' });
+    // Validate input
+    if (!email || !password || !confirmPassword) {
+      return res.status(400).json({ message: 'All fields are required' });
     }
 
     if (password !== confirmPassword) {
       return res.status(400).json({ message: 'Passwords do not match' });
     }
 
-    // Check if user already exists
-    const existingUser = users.find(user => user.email === email);
-    if (existingUser) {
-      return res.status(409).json({ message: 'User with this email already exists' });
+    if (password.length < 6) {
+      return res.status(400).json({ message: 'Password must be at least 6 characters' });
     }
 
-    // Create new user
-    const newUser = {
-      id: users.length + 1,
-      email,
-      password, // In production, this would be hashed
-      createdAt: new Date().toISOString()
-    };
+    // Create user in Firebase Auth
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
 
-    users.push(newUser);
-
-    // Return success but don't include password in response
-    const { password: _, ...userWithoutPassword } = newUser;
-    return res.status(201).json({ 
-      message: 'User registered successfully',
-      user: userWithoutPassword
+    // Create user document in Firestore
+    const db = getFirestore();
+    await setDoc(doc(db, 'users', user.uid), {
+      email: user.email,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      onboardingComplete: false
     });
+
+    return res.status(201).json({ 
+      message: 'Registration successful',
+      user: {
+        uid: user.uid,
+        email: user.email
+      }
+    });
+
   } catch (error) {
     console.error('Registration error:', error);
-    return res.status(500).json({ message: 'Internal server error' });
+    let errorMessage = 'Registration failed';
+    
+    if (error.code === 'auth/email-already-in-use') {
+      errorMessage = 'Email already in use';
+    } else if (error.code === 'auth/invalid-email') {
+      errorMessage = 'Invalid email format';
+    }
+
+    return res.status(400).json({ message: errorMessage });
   }
 }

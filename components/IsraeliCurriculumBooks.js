@@ -579,17 +579,54 @@ const israeliCurriculumBooks = [
 
 // Function to get books by grade
 function getBooksByGrade(grade) {
+  if (!grade || typeof grade !== 'string') {
+    console.error('Invalid grade parameter:', grade);
+    return [];
+  }
   return israeliCurriculumBooks.filter(book => book.grade === grade);
 }
 
 // Function to get books by subject
 function getBooksBySubject(subject) {
+  if (!subject || typeof subject !== 'string') {
+    console.error('Invalid subject parameter:', subject);
+    return [];
+  }
   return israeliCurriculumBooks.filter(book => book.subject === subject);
 }
 
 // Function to get books by grade and subject
 function getBooksByGradeAndSubject(grade, subject) {
+  if (!grade || typeof grade !== 'string' || !subject || typeof subject !== 'string') {
+    console.error('Invalid parameters - grade:', grade, 'subject:', subject);
+    return [];
+  }
   return israeliCurriculumBooks.filter(book => book.grade === grade && book.subject === subject);
 }
+
+// Validate all book objects have required fields
+function validateBookData() {
+  const requiredFields = ['id', 'title', 'subject', 'grade', 'publisher', 'description'];
+  const invalidBooks = [];
+  
+  israeliCurriculumBooks.forEach(book => {
+    const missingFields = requiredFields.filter(field => !book[field]);
+    if (missingFields.length > 0) {
+      invalidBooks.push({
+        id: book.id || 'unknown',
+        missingFields
+      });
+    }
+  });
+  
+  if (invalidBooks.length > 0) {
+    console.error('Invalid book data found:', invalidBooks);
+    return false;
+  }
+  return true;
+}
+
+// Run validation on module load
+validateBookData();
 
 export { israeliCurriculumBooks, getBooksByGrade, getBooksBySubject, getBooksByGradeAndSubject };

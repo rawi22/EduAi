@@ -16,14 +16,18 @@ const BookSelector = ({ grade, onBooksSelected }) => {
     // Filter books by grade when component mounts or grade changes
     setIsLoading(true);
     
-    setTimeout(() => {
+    try {
       if (grade) {
         setAvailableBooks(getBooksByGrade(grade));
       } else {
         setAvailableBooks(israeliCurriculumBooks);
       }
+    } catch (error) {
+      console.error('Error loading books:', error);
+      setAvailableBooks([]);
+    } finally {
       setIsLoading(false);
-    }, 500); // Simulate loading for better UX
+    }
   }, [grade]);
   
   const handleSubjectFilter = (subject) => {
@@ -135,14 +139,15 @@ const BookSelector = ({ grade, onBooksSelected }) => {
             >
               <div className={styles.bookImageContainer}>
                 <div className={styles.imageLoader}>
-                  <img 
-                    src={book.imageUrl} 
-                    alt={book.title} 
+                  <img
+                    src={book.imageUrl}
+                    alt={book.title}
                     className={styles.bookImage}
                     key={`book-image-${book.id}`}
                     onError={(e) => {
                       e.target.onerror = null;
-                      e.target.src = 'https://via.placeholder.com/150x200?text=Book+Cover';
+                      e.target.src = 'https://placehold.co/150x200';
+                      console.log('Failed to load book image, using placeholder instead');
                     }}
                   />
                 </div>

@@ -1,6 +1,8 @@
-import users from './users';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../lib/firebase';
+import { setDoc, doc, getDoc, getFirestore } from 'firebase/firestore';
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
   }
@@ -8,37 +10,48 @@ export default function handler(req, res) {
   try {
     const { email, password } = req.body;
 
-    // Basic validation
+    // Validate input
     if (!email || !password) {
       return res.status(400).json({ message: 'Email and password are required' });
     }
 
-    // Find user by email
-    const user = users.find(user => user.email === email);
+    // Authenticate user
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    // Get additional user data from Firestore
+    const db = getFirestore();
+    const userDoc = await getDoc(doc(db, 'users', user.uid));
     
-    // Check if user exists and password matches
-    if (!user || user.password !== password) {
-      return res.status(401).json({ message: 'Invalid email or password' });
+    if (!userDoc.exists()) {
+      return res.status(404).json({ message: 'User data not found' });
     }
 
-    // Create session token (in a real app, this would be a JWT)
-    const session = {
-      id: user.id,
-      email: user.email,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      isLoggedIn: true
-    };
+    const userData = userDoc.data();
 
-    // Return user data without password
-    const { password: _, ...userWithoutPassword } = user;
-    return res.status(200).json({ 
+    // Return user data (excluding sensitive info)
+    const { password: _, ...safeUserData } = userData;
+    
+    return res.status(200).json({
       message: 'Login successful',
-      user: userWithoutPassword,
-      session
+      user: safeUserData,
+      session: {
+        uid: user.uid,
+        email: user.email,
+        token: await user.getIdToken()
+      }
     });
+
   } catch (error) {
     console.error('Login error:', error);
-    return res.status(500).json({ message: 'Internal server error' });
+    let errorMessage = 'Login failed';
+    
+    if (error.code === 'auth/wrong-password') {
+      errorMessage = 'Invalid password';
+    } else if (error.code === 'auth/user-not-found') {
+      errorMessage = 'User not found';
+    }
+
+    return res.status(401).json({ message: errorMessage });
   }
 }

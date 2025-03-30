@@ -17,21 +17,21 @@ export default function Landing() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Check if user is already logged in
-    const checkSession = async () => {
-      try {
-        const session = JSON.parse(localStorage.getItem('session'));
-        if (session && session.isLoggedIn) {
-          router.push('/chat');
-        }
-      } catch (error) {
-        // Clear invalid session data
-        localStorage.removeItem('session');
+    // We might still want to clear invalid sessions on load,
+    // but we should NOT automatically redirect from here.
+    // Redirection should happen after successful login/signup actions.
+    try {
+      const session = localStorage.getItem('session');
+      if (session) {
+        // Attempt to parse, clear if invalid JSON
+        JSON.parse(session);
       }
-    };
-
-    checkSession();
-  }, [router]);
+    } catch (error) {
+      // Clear invalid session data if parsing fails
+      console.log("Clearing invalid session from localStorage");
+      localStorage.removeItem('session');
+    }
+  }, []); // Run only once on initial mount
 
   const handleChange = (e) => {
     const { name, value } = e.target;
