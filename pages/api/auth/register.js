@@ -61,13 +61,21 @@ console.log("[Register API] Received request"); // Log entry point
         throw new Error("Local Firebase config missing");
     }
 
-    // Initialize a temporary app instance ONLY if none exists (standard check)
-    // Note: This might still pick up the global app if lib/firebase ran first in the same container instance.
-    // A truly isolated test might need a unique app name, but let's try this first.
-    const localApp = !getApps().length ? initializeApp(localFirebaseConfig) : getApp();
-    const localAuth = getAuth(localApp); // Get auth from the potentially local app instance
-    console.log("[Register API] Local Auth instance obtained.");
-    // --- End Local Auth Initialization ---
+    // --- Initialize Firebase app with a UNIQUE name for this request ---
+    const uniqueAppName = `register-${Date.now()}-${Math.random().toString(36).substring(7)}`;
+    console.log(`[Register API] Initializing Firebase app with unique name: ${uniqueAppName}`);
+    let localApp;
+    try {
+        // Attempt to initialize with the unique name. This should always create a new instance.
+        localApp = initializeApp(localFirebaseConfig, uniqueAppName);
+    } catch (initError) {
+        // Log if initialization itself fails, though unlikely if config is present
+        console.error(`[Register API] CRITICAL: Failed to initialize Firebase app with unique name ${uniqueAppName}`, initError);
+        throw new Error("Firebase local initialization failed");
+    }
+    const localAuth = getAuth(localApp); // Get auth from this specific, uniquely named instance
+    console.log(`[Register API] Local Auth instance obtained for app: ${uniqueAppName}`);
+    // --- End Unique Local Auth Initialization ---
 
     // Create user in Firebase Auth using the LOCAL auth instance
     const userCredential = await createUserWithEmailAndPassword(localAuth, email, password);
