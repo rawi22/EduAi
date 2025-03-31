@@ -6,7 +6,10 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
   }
-
+// --- Add this diagnostic log ---
+console.log(`[Register API] Checking Environment Variable - NEXT_PUBLIC_FIREBASE_PROJECT_ID: ${process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID}`);
+// --- End diagnostic log ---
+console.log("[Register API] Received request"); // Log entry point
   console.log("[Register API] Received request"); // Log entry point
   try {
     const { email, password, confirmPassword } = req.body;
