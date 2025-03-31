@@ -40,36 +40,72 @@ export default function Onboarding() {
     }
 
     // Fetch user data if available
+    // Fetch user data if available
     const fetchUserData = async () => {
+      console.log("Attempting to fetch user data...");
       try {
+        const tempUserEmail = localStorage.getItem('tempUserEmail');
+        console.log("Retrieved tempUserEmail:", tempUserEmail);
+        if (!tempUserEmail) {
+          // This case should ideally be caught by the check outside useEffect,
+          // but adding a safeguard here.
+          console.log("No tempUserEmail found inside fetchUserData, redirecting to /");
+          router.push('/');
+          return; // Stop execution if no email
+        }
+
+        console.log(`Fetching user data for email: ${tempUserEmail}`);
         const response = await fetch(`/api/auth/user?email=${encodeURIComponent(tempUserEmail)}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
           }
         });
-        
+        console.log(`Fetch response status: ${response.status}`);
+
         if (!response.ok) {
-          throw new Error('Failed to fetch user data');
+          // Log response body for debugging if possible, but handle potential errors reading it
+          let errorBody = 'Could not read error body';
+          try {
+            errorBody = await response.text(); // Use text() first as it might not be JSON
+            console.error("Error response body:", errorBody);
+          } catch (bodyError) {
+            console.error("Failed to read error response body:", bodyError);
+          }
+          throw new Error(`HTTP error! status: ${response.status}, body: ${errorBody}`);
         }
-        
+
         const data = await response.json();
-        if (data.user) {
+        console.log("Parsed user data:", data);
+        
+        if (data && data.user && data.user.id) {
+          console.log(`User found with ID: ${data.user.id}. Redirecting to /chat`);
           setUserId(data.user.id);
-          // Ensure the user is redirected only if specifically required
           router.push('/chat');
         } else {
+          console.log("User data not found or invalid in response. Redirecting to /");
+          // Optionally set an error message here if this case is unexpected
+          // setErrors({ message: 'User data not found after fetch.' });
           router.push('/');
         }
       } catch (error) {
-        console.error('Error fetching user data:', error);
-        // Provide user feedback
-        setErrors('Failed to fetch user data. Please try again.');
+        console.error('Error during fetchUserData:', error);
+        // Provide user feedback - setting an object for consistency
+        setErrors({ message: `Failed to process user data: ${error.message}` });
+        console.log("Caught error, redirecting to /");
+        router.push('/'); // Redirect on error
       }
     };
 
-    fetchUserData();
-  }, [router, setUserId, setError]);
+    // Only fetch if tempUserEmail exists (redundant check, but safe)
+    if (localStorage.getItem('tempUserEmail')) {
+        console.log("Calling fetchUserData...");
+        fetchUserData();
+    } else {
+        console.log("Skipping fetchUserData call as tempUserEmail is missing.");
+    }
+
+  }, [router]); // Removed setUserId and setErrors as dependencies - they are stable setters. Added console logs instead.
 
   React.useEffect(() => {
     if (formData.city) {
