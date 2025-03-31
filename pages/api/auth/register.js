@@ -59,15 +59,28 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error('Registration error:', error);
+    // Log the full error details
+    console.error('[Register API] Error during registration:', error);
+    console.error(`[Register API] Error Code: ${error.code}, Message: ${error.message}`);
+
     let errorMessage = 'Registration failed';
-    
+    let statusCode = 500; // Default to internal server error
+
     if (error.code === 'auth/email-already-in-use') {
       errorMessage = 'Email already in use';
+      statusCode = 400; // Bad request (user error)
     } else if (error.code === 'auth/invalid-email') {
       errorMessage = 'Invalid email format';
+      statusCode = 400; // Bad request (user error)
+    } else if (error.code === 'auth/weak-password') {
+        errorMessage = 'Password is too weak.';
+        statusCode = 400; // Bad request (user error)
+    } else {
+        // Handle other Firebase errors or unexpected errors
+        errorMessage = 'An unexpected error occurred during registration.';
+        statusCode = 500; // Internal server error
     }
 
-    return res.status(400).json({ message: errorMessage });
+    return res.status(statusCode).json({ message: errorMessage });
   }
 }
