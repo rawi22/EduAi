@@ -43,15 +43,30 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error('Login error:', error);
+    console.error('[Login API] Error during login:', error); // Log the specific error
     let errorMessage = 'Login failed';
-    
-    if (error.code === 'auth/wrong-password') {
-      errorMessage = 'Invalid password';
-    } else if (error.code === 'auth/user-not-found') {
-      errorMessage = 'User not found';
-    }
+    let statusCode = 500; // Default to internal server error
 
-    return res.status(401).json({ message: errorMessage });
+     // Check specific Firebase auth error codes
+    if (error.code === 'auth/user-not-found' ||
+        error.code === 'auth/wrong-password' ||
+        error.code === 'auth/invalid-credential' || // More general invalid credential error
+        error.code === 'auth/invalid-email') { // Catch invalid email format on login too
+      errorMessage = 'Invalid email or password';
+      statusCode = 401; // Use 401 for auth errors
+      console.log(`[Login API] Authentication failed: ${error.code}`);
+    } else if (error.message === "Firestore not initialized") {
+        // Handle specific internal error
+        errorMessage = 'Server configuration error.';
+        statusCode = 500; // Use 500 for server issues
+        console.log("[Login API] Firestore initialization error detected.");
+    } else {
+       // Generic error for other issues (e.g., network, unexpected Firebase errors)
+       errorMessage = 'An unexpected error occurred during login.';
+       statusCode = 500; // Use 500 for unknown server errors
+       console.log("[Login API] Unknown error during login.");
+    }
+    
+    return res.status(statusCode).json({ message: errorMessage });
   }
 }
