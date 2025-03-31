@@ -1,5 +1,5 @@
 import { getFirestore, doc, updateDoc } from 'firebase/firestore';
-import { auth } from '../../lib/firebase';
+import { auth } from '../../../lib/firebase';
 
 export default async function handler(req, res) {
   if (req.method !== 'PUT') {

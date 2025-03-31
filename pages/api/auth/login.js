@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../lib/firebase';
+import { auth } from '../../../lib/firebase';
 import { setDoc, doc, getDoc, getFirestore } from 'firebase/firestore';
 
 export default async function handler(req, res) {
