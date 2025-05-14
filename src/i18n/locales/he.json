@@ -1,0 +1,77 @@
+{
+  "app": {
+    "name": "אוסטאזק AI",
+    "tagline": "למידה חכמה. הצלחה מובטחת"
+  },
+  "auth": {
+    "login": "התחברות",
+    "register": "הרשמה",
+    "email": "דואר אלקטרוני",
+    "password": "סיסמה",
+    "forgotPassword": "שכחת סיסמה?",
+    "loginButton": "התחבר",
+    "registerButton": "הירשם",
+    "startJourney": "התחל את מסע ההצלחה"
+  },
+  "dashboard": {
+    "title": "לוח בקרה",
+    "profile": "פרופיל",
+    "aiTeacher": "מורה AI",
+    "progress": "התקדמות",
+    "upload": "העלאת חומרים",
+    "settings": "הגדרות"
+  },
+  "studentForm": {
+    "title": "פרטי תלמיד",
+    "name": "שם התלמיד",
+    "school": "שם בית הספר",
+    "grade": "כיתה",
+    "selectGrade": "בחר כיתה",
+    "subject": "מקצוע",
+    "selectSubject": "בחר מקצוע",
+    "notes": "הערות נוספות",
+    "saveButton": "שמור מידע",
+    "successMessage": "המידע נשמר בהצלחה",
+    "errorMessage": "אירעה שגיאה בשמירת המידע. אנא נסה שוב."
+  },
+  "chat": {
+    "placeholder": "הקלד את ההודעה שלך כאן...",
+    "welcome": "שלום! אני המורה החכם שלך. איך אוכל לעזור לך היום?",
+    "errorMessage": "מצטער, אירעה שגיאה בעיבוד הבקשה שלך. אנא נסה שוב."
+  },
+  "upload": {
+    "title": "העלאת חומרי לימוד",
+    "file": "קובץ",
+    "dragDrop": "בחר קובץ או גרור לכאן",
+    "subject": "מקצוע",
+    "teacher": "מורה",
+    "teacherPlaceholder": "שם המורה",
+    "uploadButton": "העלה קובץ",
+    "uploading": "מעלה...",
+    "successMessage": "הקובץ הועלה בהצלחה",
+    "errorMessage": "אירעה שגיאה בהעלאת הקובץ"
+  },
+  "progress": {
+    "title": "התקדמות התלמיד",
+    "overview": "סקירה כללית",
+    "subjects": "מקצועות",
+    "activities": "פעילויות אחרונות",
+    "noData": "אין נתונים זמינים עדיין"
+  },
+  "settings": {
+    "title": "הגדרות חשבון",
+    "language": "שפה",
+    "arabic": "ערבית",
+    "hebrew": "עברית",
+    "notifications": "התראות",
+    "theme": "ערכת נושא",
+    "logout": "התנתק"
+  },
+  "subjects": {
+    "math": "מתמטיקה",
+    "science": "מדעים",
+    "arabic": "ערבית",
+    "english": "אנגלית",
+    "hebrew": "עברית"
+  }
+}

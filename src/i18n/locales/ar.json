@@ -1,0 +1,77 @@
+{
+  "app": {
+    "name": "أستاذك AI",
+    "tagline": "تعلم ذكي. نجاح مضمون"
+  },
+  "auth": {
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "loginButton": "دخول",
+    "registerButton": "تسجيل",
+    "startJourney": "ابدأ رحلة النجاح"
+  },
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "profile": "الملف الشخصي",
+    "aiTeacher": "المعلم الذكي",
+    "progress": "التقدم",
+    "upload": "رفع المواد",
+    "settings": "الإعدادات"
+  },
+  "studentForm": {
+    "title": "معلومات الطالب",
+    "name": "اسم الطالب",
+    "school": "اسم المدرسة",
+    "grade": "الصف الدراسي",
+    "selectGrade": "اختر الصف",
+    "subject": "المادة الدراسية",
+    "selectSubject": "اختر المادة",
+    "notes": "ملاحظات إضافية",
+    "saveButton": "حفظ المعلومات",
+    "successMessage": "تم حفظ المعلومات بنجاح",
+    "errorMessage": "حدث خطأ أثناء حفظ البيانات. يرجى المحاولة مرة أخرى."
+  },
+  "chat": {
+    "placeholder": "اكتب رسالتك هنا...",
+    "welcome": "مرحباً! أنا معلمك الذكي. كيف يمكنني مساعدتك اليوم؟",
+    "errorMessage": "عذراً، حدث خطأ أثناء معالجة طلبك. يرجى المحاولة مرة أخرى."
+  },
+  "upload": {
+    "title": "رفع المواد الدراسية",
+    "file": "الملف",
+    "dragDrop": "اختر ملفًا أو اسحبه هنا",
+    "subject": "المادة",
+    "teacher": "المعلم",
+    "teacherPlaceholder": "اسم المعلم",
+    "uploadButton": "رفع الملف",
+    "uploading": "جارٍ الرفع...",
+    "successMessage": "تم رفع الملف بنجاح",
+    "errorMessage": "حدث خطأ أثناء رفع الملف"
+  },
+  "progress": {
+    "title": "تقدم الطالب",
+    "overview": "نظرة عامة",
+    "subjects": "المواد الدراسية",
+    "activities": "الأنشطة الأخيرة",
+    "noData": "لا توجد بيانات متاحة بعد"
+  },
+  "settings": {
+    "title": "إعدادات الحساب",
+    "language": "اللغة",
+    "arabic": "العربية",
+    "hebrew": "العبرية",
+    "notifications": "الإشعارات",
+    "theme": "المظهر",
+    "logout": "تسجيل الخروج"
+  },
+  "subjects": {
+    "math": "الرياضيات",
+    "science": "العلوم",
+    "arabic": "اللغة العربية",
+    "english": "اللغة الإنجليزية",
+    "hebrew": "اللغة العبرية"
+  }
+}
