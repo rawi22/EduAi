@@ -5,10 +5,24 @@ import sys
 import os
 
 # Add the backend directory to the Python path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../backend')))
+backend_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../backend'))
+sys.path.append(backend_path)
+print(f"Added backend path: {backend_path}")
+print(f"Python path: {sys.path}")
 
-# Import the FastAPI app
-from main import app
+try:
+    # Import the FastAPI app
+    from main import app
+    print("Successfully imported FastAPI app")
+except Exception as e:
+    print(f"Error importing FastAPI app: {e}")
+    # Fallback to a simple handler if import fails
+    from fastapi import FastAPI
+    app = FastAPI()
+    
+    @app.get("/")
+    async def root():
+        return {"message": "Fallback API is running. Import error occurred."}
 
 # Import ASGI handler
 from mangum import Mangum

@@ -6,7 +6,7 @@
       "use": "@vercel/node"
     },
     {
-      "src": "api/python/index.py",
+      "src": "api/python/handler.py",
       "use": "@vercel/python"
     },
     {
@@ -20,14 +20,18 @@
   "routes": [
     {
       "src": "/api/python/(.*)",
-      "dest": "api/python/index.py"
+      "dest": "api/python/handler.py"
     },
     {
       "src": "/api/(.*)",
       "dest": "api/server.js"
     },
     {
-      "src": "/(.*)",
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/(.*\\.(js|css|ico|png|jpg|jpeg|svg|webp))",
       "dest": "/$1"
     },
     {
